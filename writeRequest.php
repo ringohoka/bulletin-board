@@ -11,9 +11,12 @@ class writeRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return false;
+    public function authorize(){
+        if($this->path() == 'write'){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -21,10 +24,16 @@ class writeRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules(){
         return [
-            //
+            //"key => value"
+            "text" => ["required"],
         ];
     }
+    public function messages(){
+        return[
+            "text.required" => "メッセージが入力されていません",
+        ];
+    }
+
 }
