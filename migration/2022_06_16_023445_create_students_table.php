@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStumessagesTable extends Migration
+class CreateStudentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateStumessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('stumessages', function (Blueprint $table) {
-            $table->id();
-            $table->integer('STUCON_NO');
-            $table->text('CONTENTS',256);
-            $table->integer('SUB_NO');
-            $table->integer('UNDERSTAND');
-            $table->integer('SNUMBER') -> length(7);
+        Schema::create('students', function (Blueprint $table) {
+            $table->integer('SNUMBER') -> length(7) ->primary();
+            $table->string('STU_NAME');
+            $table->string('PASSWORD');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +29,6 @@ class CreateStumessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stumessages');
+        Schema::dropIfExists('students');
     }
 }

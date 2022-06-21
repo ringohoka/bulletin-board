@@ -14,9 +14,9 @@ class CreateTeamessagesTable extends Migration
     public function up()
     {
         Schema::create('teamessages', function (Blueprint $table) {
-            $table->id();
-            $table->integer('TEACON_NO');
-            $table->integer('STUCON_NO');
+            $table->id('TEACON_NO');
+            $table->unsignedBigInteger('STUCON_NO');
+            $table->foreign('STUCON_NO')->references('STUCON_NO')->on('stumessages')->onDelete('cascade');
             $table->text('CONTENTS',256);
             $table->timestamps();
             $table->softDeletes();
