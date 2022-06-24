@@ -5,14 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="{{ mix('css/login.css') }}" rel="stylesheet">
-
     <title>Document</title>
 </head>
 <body>
     
-
-</html>
 <h1>Q&Aログインページ</h1>
 <form action="login.php" method="post">
 <div>
@@ -30,3 +26,4 @@
 <input type="submit" value="ログイン">
 </form>
 </body>
+</html>
