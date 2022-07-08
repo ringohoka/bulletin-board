@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+body{
+    text-align: center; 
+    line-height: 400%;
+}
+h1{
+    text-align: center;
+    
+    font-size: 170%;
+    
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
