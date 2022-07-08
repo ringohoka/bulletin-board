@@ -6,17 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Subject extends Model
+class Teamessage extends Model
 {
     use HasFactory;
 
     use softDeletes;
 
-    protected $table = 'subjects';
-    protected $primaryKey = 'id';
+    protected $table = 'teamessages';
+    protected $primaryKey = 'teacon_no';
 
-    public function stumessage()
-    {
-        return $this->hasOne('App\Models\Stumessage');
+    public function Stumessage(){
+        return $this -> belongsTo('App\Models\Stumessage');
     }
 }

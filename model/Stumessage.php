@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Stumessage extends Model
 {
@@ -12,18 +13,17 @@ class Stumessage extends Model
     use softDeletes;
 
     protected $table = 'stumessages';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'stucon_no';
 
     public function subjects(){
-        return $this -> belongsTo('App\Models\Subject');
+        return $this -> hasOne('App\Models\Subject');
     }
 
     public function students(){
-        return $this -> belongsTo('App\Models\Student');
+        return $this -> hasOne('App\Models\Student');
     }
 
     public function teamessages(){
-        return $this -> belongsTo('App\Models\Teamessage');
+        return $this -> hasOne('App\Models\Teamessage');
     }
-   
 }
