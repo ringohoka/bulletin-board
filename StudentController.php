@@ -40,13 +40,13 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         //
-        $student = new Student;
+        $student = new Student();
         $student->sno = $request->sno;
         $student->name = $request->name;
         $student->password = $request->password;
         $student->save();
-        return redirect('students/' $student->id);
-
+        //return redirect('students/' $student->id);
+        return view('Student')compact('');
     }
 
     /**
