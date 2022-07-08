@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Teamessage;
 use App\Http\Requests\StoreTeamessageRequest;
 use App\Http\Requests\UpdateTeamessageRequest;
+use Illuminate\Support\Facades\DB;
 
 class TeamessageController extends Controller
 {
@@ -16,8 +17,8 @@ class TeamessageController extends Controller
     public function index()
     {
         //
-        $teamessages = Teamessage::all(); 
-        return view('exboard',compact('teamessages')); 
+        $teamessages = Teamessage::all();
+        return view('texboard',compact('teamessages'));
     }
 
     /**
@@ -28,6 +29,7 @@ class TeamessageController extends Controller
     public function create()
     {
         //
+        return view('twrite');
     }
 
     /**
@@ -39,6 +41,16 @@ class TeamessageController extends Controller
     public function store(StoreTeamessageRequest $request)
     {
         //
+        $teamessage = new Teamessage();
+        $teamessage -> contents = $request->input('contents');
+        $teamessage -> stucon_no = '5';
+
+        DB::transaction(function () use ($teamessage){
+            $teamessage -> save();
+        });
+        $request -> session() -> regenerateToken();
+        return redirect('/texboard/');
+
     }
 
     /**

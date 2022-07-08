@@ -13,11 +13,16 @@ class CreateSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subjects', function (Blueprint $table) {
-            $table->id();
-            $table->string('SUBJECT');
-            $table->softDeletes();
-        });
+        if (Schema::hasTable('subjects')) {
+            // テーブルが存在していればリターン
+            return;
+        }else{
+            Schema::create('subjects', function (Blueprint $table) {
+                $table->id();
+                $table->string('subject');
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

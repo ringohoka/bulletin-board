@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stumessage;
+use App\Models\Teamessage;
 use App\Http\Requests\StoreStumessageRequest;
 use App\Http\Requests\UpdateStumessageRequest;
+use Illuminate\Support\Facades\DB;
+
 
 class StumessageController extends Controller
 {
@@ -16,8 +19,9 @@ class StumessageController extends Controller
     public function index()
     {
         //
-        $stumessages = Stumessage::all(); 
-        return view('exboard',compact('stumessages')); 
+        $stumessages = Stumessage::all();
+        return view('exboard',compact('stumessages'));
+
     }
 
     /**
@@ -28,6 +32,7 @@ class StumessageController extends Controller
     public function create()
     {
         //
+        return view('write');
     }
 
     /**
@@ -38,7 +43,16 @@ class StumessageController extends Controller
      */
     public function store(StoreStumessageRequest $request)
     {
-        //
+        $stumessage = new Stumessage();
+        $stumessage -> contents = $request->input('contents');
+        $stumessage -> sub_no = '4';
+        $stumessage -> snumber = '0000000';
+
+        DB::transaction(function () use ($stumessage){
+            $stumessage -> save();
+        });
+        $request -> session() -> regenerateToken();
+        return redirect('/exboard/');
     }
 
     /**

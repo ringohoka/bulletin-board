@@ -13,7 +13,7 @@ class StoreTeamessageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,14 @@ class StoreTeamessageRequest extends FormRequest
     {
         return [
             //
+            'contents'=> 'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            //
+            'contents.required'=>'文章が入力されていません。'
         ];
     }
 }
