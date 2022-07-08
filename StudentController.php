@@ -46,7 +46,7 @@ class StudentController extends Controller
         $student->password = $request->password;
         $student->save();
         //return redirect('students/' $student->id);
-        return view('Student')compact('');
+        return view('Student',compact('result'));
     }
 
     /**
