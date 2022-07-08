@@ -28,6 +28,7 @@ class TeacherController extends Controller
     public function create()
     {
         //
+        return view('terchers.create');
     }
 
     /**
@@ -39,6 +40,13 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {
         //
+        $teacher = new Teacher;
+        $teachar->tno = $request->tno;
+        $teachar->name = $request->name;
+        $teachar->password = $request->password;
+        $teachar->save();
+        retuen redirect('teachars/' $teachar->id);
+
     }
 
     /**
