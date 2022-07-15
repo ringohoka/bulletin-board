@@ -18,9 +18,8 @@ class CreateTeamessagesTable extends Migration
             return;
         }else{
             Schema::create('teamessages', function (Blueprint $table) {
-                $table->id('teacon_no');
-                $table->unsignedBigInteger('stucon_no');
-                $table->foreign('stucon_no')->references('stucon_no')->on('stumessages')->onDelete('cascade');
+                $table->id();
+                $table->foreignId('stumessage_id')->constrained('stumessages')->onDelete('cascade');
                 $table->text('contents');
                 $table->timestamps();
                 $table->softDeletes();

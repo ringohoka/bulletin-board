@@ -20,12 +20,12 @@ class TeamessageSeeder extends Seeder
             DB::table('teamessages')->insert([
                 [
                 'contents' => '違います。',
-                'stucon_no' => '1',
+                'stumessage_id' => '1',
                 'created_at' => date('Y-m-d H:i:s')
                 ],
                 [
                 'contents' => 'はい、そうです。',
-                'stucon_no' => '2',
+                'stumessage_id' => '2',
                 'created_at' => date('Y-m-d H:i:s')
                 ]
             ]);

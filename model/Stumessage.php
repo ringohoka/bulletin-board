@@ -13,14 +13,14 @@ class Stumessage extends Model
     use softDeletes;
 
     protected $table = 'stumessages';
-    protected $primaryKey = 'stucon_no';
+    protected $primaryKey = 'id';
 
     public function subjects(){
-        return $this -> hasOne('App\Models\Subject');
+        return $this -> hasMany('App\Models\Subject');
     }
 
     public function students(){
-        return $this -> hasOne('App\Models\Student');
+        return $this -> hasMany('App\Models\Student');
     }
 
     public function teamessages(){

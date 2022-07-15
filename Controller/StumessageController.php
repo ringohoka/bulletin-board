@@ -20,6 +20,8 @@ class StumessageController extends Controller
     {
         //
         $stumessages = Stumessage::all();
+
+        // dd($stummessages[0]['teamessages']);
         return view('exboard',compact('stumessages'));
 
     }
@@ -45,11 +47,14 @@ class StumessageController extends Controller
     {
         $stumessage = new Stumessage();
         $stumessage -> contents = $request->input('contents');
+        //$subject= Subject::find($id);
         $stumessage -> sub_no = '4';
+        //$student= Student::find($snumber);;
         $stumessage -> snumber = '0000000';
 
         DB::transaction(function () use ($stumessage){
             $stumessage -> save();
+
         });
         $request -> session() -> regenerateToken();
         return redirect('/exboard/');

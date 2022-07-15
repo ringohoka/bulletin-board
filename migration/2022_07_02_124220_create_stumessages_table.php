@@ -14,11 +14,11 @@ class CreateStumessagesTable extends Migration
     public function up()
     {
         if (Schema::hasTable('stumessages')) {
-            // テーブルが存在していればリターン
-            return;
-        }else{
+             // テーブルが存在していればリターン
+             return;
+            }else{
             Schema::create('stumessages', function (Blueprint $table) {
-                $table->id('stucon_no');
+                $table->id();
                 $table->text('contents');
                 $table->unsignedBigInteger('sub_no');
                 $table->foreign('sub_no')->references('id')->on('subjects')->onDelete('cascade');

@@ -13,9 +13,9 @@ class Teamessage extends Model
     use softDeletes;
 
     protected $table = 'teamessages';
-    protected $primaryKey = 'teacon_no';
+    protected $primaryKey = 'id';
 
-    public function Stumessage(){
+    public function stumessage(){
         return $this -> belongsTo('App\Models\Stumessage');
     }
 }
